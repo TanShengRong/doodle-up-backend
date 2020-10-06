@@ -1,7 +1,7 @@
-from flask import Flask, flash, redirect, url_for
+# from flask import Flask, flash, redirect, url_for
 from flask_cors import CORS
 import flask
-from flask import jsonify, request, Response
+from flask import request#, jsonify, , Response
 from db import FirebaseHelper
 from werkzeug.utils import secure_filename
 import os
@@ -65,7 +65,7 @@ def sign_in():
     try:
         user_json = helper.sign_in_with_email_and_password(email, password)
         return user_json["displayName"], 200
-    except:
+    except Exception as e:
         return "Account does not exist or wrong credentials.", 400
 
 

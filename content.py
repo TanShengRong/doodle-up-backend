@@ -1,4 +1,4 @@
-# Parses content.json as changes all file names to their matching Firebase URLs.
+# Parses content.json as changes all file names to their matching Firebase URLs
 # Check out content.json for the very specific format needed.
 
 from db import FirebaseHelper

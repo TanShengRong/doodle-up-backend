@@ -1,5 +1,5 @@
 import pyrebase
-import uuid
+# import uuid
 import os
 import json
 import requests
@@ -7,8 +7,8 @@ from requests.exceptions import HTTPError
 
 try:
     from urllib.parse import urlencode, quote
-except:
-    from urllib import urlencode, quote
+except: Exceptions as e:
+    from urllib import quote#, urlencode
 
 progress = {
     "stories": {
@@ -30,7 +30,7 @@ class FirebaseHelper:
             "authDomain": "doodleup-f1847.firebaseapp.com",
             "databaseURL": "https://doodleup-f1847.firebaseio.com/",
             "storageBucket": "doodleup-f1847.appspot.com",
-            "serviceAccount": './doodleup-f1847-firebase-adminsdk-x4yoc-66b445712b.json'
+            "serviceAccount": './key.json'
         }
         app = pyrebase.initialize_app(config)
         self.db = app.database()
@@ -57,7 +57,7 @@ class FirebaseHelper:
                 'idToken']
             self.set_display_name(username, idToken)
             return "User created.", 200
-        except:
+        except Exception as e:
             return "The email is already in use", 400
 
     def set_display_name(self, displayName, idToken):
@@ -69,7 +69,7 @@ class FirebaseHelper:
             request_object = requests.post(
                 request_ref, headers=headers, data=data)
             return request_object.json()
-        except:
+        except Exception as e:
             try:
                 request_object.raise_for_status()
             except HTTPError as e:
@@ -100,7 +100,7 @@ class FirebaseHelper:
             for v in progress.val().values():
                 print(v['stories'][storyid])
                 return v['stories'][storyid]
-        except:
+        except Exception as e:
             return None
 
     def update_story_progress(self, username, storyid, stageid, url, completed):
@@ -129,7 +129,7 @@ class FirebaseHelper:
         except KeyError:
             print("No value found")
             return "User does not exist", 400
-        except:
+        except Exception as e:
             return "Something went wrong", 400
 
     def start_new_story(self, username, storyid):
@@ -161,7 +161,7 @@ class FirebaseHelper:
         try:
             for v in log.val().values():
                 return v
-        except:
+        except Exception as e:
             return None
 
     def get_all_content(self):
@@ -176,7 +176,7 @@ class FirebaseHelper:
                 }
                 result.append(story)
             return result
-        except:
+        except Exception as e:
             return []
 
 
