@@ -7,5 +7,6 @@ install:
   - pip install -r requirements.txt
 # command to run tests
 script:
-    - python -m flake # test for linting
-# # - python -m pytest -v
+    - pytest --flake8
+    # - python -m flake8 # test for linting
+    # - python -m pytest -v

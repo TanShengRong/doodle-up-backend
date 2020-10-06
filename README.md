@@ -1,4 +1,4 @@
-# DoodleUp Backend
+# DoodleUp Backend [![Build Status](https://travis-ci.com/TanShengRong/doodle-up-backend.svg?token=zNTTYhNxQUCYoBN6uBps&branch=main)](https://travis-ci.com/TanShengRong/doodle-up-backend)
 
 ## TODO
 
