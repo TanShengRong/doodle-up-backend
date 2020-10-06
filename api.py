@@ -1,7 +1,7 @@
 # from flask import Flask, flash, redirect, url_for
 from flask_cors import CORS
 import flask
-from flask import request#, jsonify, , Response
+from flask import request  
 from db import FirebaseHelper
 from werkzeug.utils import secure_filename
 import os
@@ -65,7 +65,7 @@ def sign_in():
     try:
         user_json = helper.sign_in_with_email_and_password(email, password)
         return user_json["displayName"], 200
-    except Exception as e:
+    except Exception:
         return "Account does not exist or wrong credentials.", 400
 
 
@@ -103,7 +103,7 @@ def save_user_progress():
     storyid = request.form['story_id']
     stage_id = request.form['stage_id']
     completed = request.form['completed']
-    json = request.get_json()
+    # json = request.get_json()
     # TODO: Saving file needs testing
     # file = json["new_image"]
     file = request.files['new_image']

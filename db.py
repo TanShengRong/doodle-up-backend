@@ -7,7 +7,7 @@ from requests.exceptions import HTTPError
 
 try:
     from urllib.parse import urlencode, quote
-except: Exceptions as e:
+except Exceptions as e:
     from urllib import quote#, urlencode
 
 progress = {
@@ -39,9 +39,9 @@ class FirebaseHelper:
 
     def upload_file(self, filepath, upload_to):
         filename = os.path.basename(filepath)
-        self.storage.child(upload_to+filename).put(filepath)
-        print(upload_to+filename)
-        return self.storage.child(upload_to+filename).get_url(None)
+        self.storage.child(upload_to + filename).put(filepath)
+        print(upload_to + filename)
+        return self.storage.child(upload_to + filename).get_url(None)
 
     def get_url(self, filepath):
         return self.storage.child(filepath).get_url(None)
@@ -114,7 +114,7 @@ class FirebaseHelper:
                         stage['image_url'] == url
                         stage['completed'] = True
                         self.db.child('progress').update(progress)
-                        return "Updated stage "+stageid, 200
+                        return "Updated stage " + stageid, 200
                 # did not find existing stage, add as new save
                 new_stage = {
                     "image_url": url,
