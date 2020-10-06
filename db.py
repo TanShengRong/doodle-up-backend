@@ -72,7 +72,7 @@ class FirebaseHelper:
         except Exception:
             try:
                 request_object.raise_for_status()
-            except HTTPError:
+            except HTTPError as e:
                 raise HTTPError(e, request_object.text)
 
     def sign_in_with_email_and_password(self, email, password):
