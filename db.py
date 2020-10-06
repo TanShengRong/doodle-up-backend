@@ -1,7 +1,9 @@
 import pyrebase
-from temp import stories
 import uuid
 import os
+import json
+import requests
+from requests.exceptions import HTTPError
 
 try:
     from urllib.parse import urlencode, quote
@@ -14,18 +16,7 @@ progress = {
         "stages": {
             "image_url": "www.bestdog.com",
             "stage_id": 1.1,
-            "status": "incomplete"
-        }
-    }
-}
-
-progress = {
-    "stories": {
-        "1": {
-            "asd": 1
-        },
-        "2": {
-            "asd": 2
+            "completed": False
         }
     }
 }
@@ -52,18 +43,37 @@ class FirebaseHelper:
         print(upload_to+filename)
         return self.storage.child(upload_to+filename).get_url(None)
 
-    def get_file(self, filepath):
-        return
+    def get_url(self, filepath):
+        return self.storage.child(filepath).get_url(None)
 
-    def get_all_users(self):
-        return self.db.child('Users').get()
-
-    def create_new_user(self, username, email, password):
-        user = {"username": username, "email": email, "password": password}
+    def create_new_user(self, email, password, username):
+        # user = {"username": username, "email": email, "password": password}
         story = {"username": username, "story": []}
-        self.auth.create_user_with_email_and_password(email, password)
-        self.db.child('Users').push(user)
+        # self.db.child('Users').push(user)
         self.db.child('progress').push(story)
+        try:
+            self.auth.create_user_with_email_and_password(email, password)
+            idToken = self.sign_in_with_email_and_password(email, password)[
+                'idToken']
+            self.set_display_name(username, idToken)
+            return "User created.", 200
+        except:
+            return "The email is already in use", 400
+
+    def set_display_name(self, displayName, idToken):
+        request_ref = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/setAccountInfo?key={0}".format(
+            self.auth.api_key)
+        headers = {"content-type": "application/json; charset=UTF-8"}
+        data = json.dumps({"idToken": idToken, "displayName": displayName})
+        try:
+            request_object = requests.post(
+                request_ref, headers=headers, data=data)
+            return request_object.json()
+        except:
+            try:
+                request_object.raise_for_status()
+            except HTTPError as e:
+                raise HTTPError(e, request_object.text)
 
     def sign_in_with_email_and_password(self, email, password):
         return self.auth.sign_in_with_email_and_password(email, password)
@@ -74,14 +84,14 @@ class FirebaseHelper:
     def get_account_info(self, idToken):
         return self.auth.get_account_info(idToken)
 
-    def get_user(self, username):
-        data = self.db.child('Users').order_by_child(
-            "username").equal_to(username).get()
-        try:
-            for v in data.val().values():
-                return v
-        except:
-            return None
+    # def get_user(self, username):
+    #     data = self.db.child('Users').order_by_child(
+    #         "username").equal_to(username).get()
+    #     try:
+    #         for v in data.val().values():
+    #             return v
+    #     except:
+    #         return None
 
     def get_story_progress(self, username, storyid):
         progress = self.db.child('progress').order_by_child(
@@ -93,21 +103,34 @@ class FirebaseHelper:
         except:
             return None
 
-    def update_story_progress(self, username, storyid, content):
+    def update_story_progress(self, username, storyid, stageid, url, completed):
         try:
             progress = self.db.child('progress').order_by_child(
                 'username').equal_to(username).get().val()
-        except:
+            for v in progress.values():
+                print(v)
+                for stage in v['stories'][storyid]["stages"]:
+                    if stage['stage_id'] == stageid:
+                        stage['image_url'] == url
+                        stage['completed'] = True
+                        self.db.child('progress').update(progress)
+                        return "Updated stage "+stageid, 200
+                # did not find existing stage, add as new save
+                new_stage = {
+                    "image_url": url,
+                    "stage_id": stageid,
+                    "completed": completed
+                }
+                v['stories'][storyid]["stages"].append(new_stage)
+
+            self.db.child('progress').update(progress)
+            return "Added new stage " + stageid + " to story " + storyid, 200
+
+        except KeyError:
             print("No value found")
-            return None
-        for v in progress.values():
-            for stage in v['stories'][storyid]["stages"]:
-                if stage["stage_id"] == content["stage_id"]:
-                    stage["image_url"] = content["image_url"]
-                    stage["status"] = content["status"]
-                    self.db.child('progress').update(progress)
-        # did not find existing stage, create new stage instead
-        self.start_new_stage(username, storyid, content["stage_id"])
+            return "User does not exist", 400
+        except:
+            return "Something went wrong", 400
 
     def start_new_story(self, username, storyid):
         # Start story
@@ -115,8 +138,8 @@ class FirebaseHelper:
             "stages": [
                     {
                         "image_url": "",
-                        "stage_id": 1.1,
-                        "status": "incomplete"
+                        "stage_id": 1,
+                        "completed": False
                     }]
         }
         log = self.db.child('progress').order_by_child(
@@ -128,26 +151,8 @@ class FirebaseHelper:
                 stories = v["stories"]
                 stories[storyid] = new_stage
         self.db.child('progress').update(log)
-        return v["stories"][storyid]
-
-    def start_new_stage(self, username, storyid, stageid):
-        new_stage = {
-            "image_url": "",
-            "stage_id": stageid,
-            "status": "incomplete"
-        }
-        try:
-            progress = self.db.child('progress').order_by_child(
-                'username').equal_to(username).get().val()
-        except:
-            return None
-        for v in progress.values():
-            stages = v['stories'][storyid]["stages"]
-            stages.append(new_stage)
-            self.db.child('progress').update(progress)
 
     def create_content(self, content):
-        storyid = content['id']
         self.db.child('content').push(content)
 
     def get_content(self, storyid):
@@ -159,8 +164,21 @@ class FirebaseHelper:
         except:
             return None
 
-# print(fb.get_user_progress(1).val())
-# print(users.val())
+    def get_all_content(self):
+        result = []
+        log = self.db.child('content').get()
+        try:
+            for v in log.val().values():
+                story = {
+                    "cover_image": v["cover_image"],
+                    "story_title": v["story_title"],
+                    "id": v["id"]
+                }
+                result.append(story)
+            return result
+        except:
+            return []
+
 
 # pyrebase has some compatability issues with url, this is a workaround
 

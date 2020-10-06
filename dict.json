@@ -1,0 +1,215 @@
+{
+    "id": "001",
+    "cover_image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fcover.png?alt=media",
+    "story_title": "Goldilocks and the Three Bears",
+    "stages": [
+        {
+            "stage_id": 1,
+            "type": "storypage",
+            "description": "Once upon a time, there was a little girl. Her name was Goldilocks. She had golden hair.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_1.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_1.mp3?alt=media",
+            "drawings": []
+        },
+        {
+            "stage_id": 2,
+            "type": "storypage",
+            "description": "One day, Goldilocks was walking in the forest. She saw a house and knocked on the door. She went inside. Nobody was there.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_2.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_2.mp3?alt=media",
+            "drawings": []
+        },
+        {
+            "stage_id": 3,
+            "type": "storypage",
+            "description": "Goldilocks saw three bowls on the table. She was hungry.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_3.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_3.mp3?alt=media",
+            "drawings": []
+        },
+        {
+            "stage_id": 4,
+            "type": "guessing",
+            "answer": "Porridge",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fporridge_guessing.png?alt=media",
+            "options": {
+                "Chair": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fchair.mp3?alt=media",
+                "Bed": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fbed.mp3?alt=media",
+                "Bear": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fbear.mp3?alt=media",
+                "Porridge": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fporridge.mp3?alt=media"
+            }
+        },
+        {
+            "stage_id": 5,
+            "type": "drawing",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fporridge_drawing.png?alt=media"
+        },
+        {
+            "stage_id": 6,
+            "type": "storypage",
+            "description": "\"This porridge is too hot! This porridge is too cold! This porridge is just right!\" Goldilocks ate all the porridge. Goldilocks was tired now.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_4.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_4.mp3?alt=media",
+            "drawings": [
+                {
+                    "stage_id": 5,
+                    "width": 350,
+                    "top": 550,
+                    "left": 1183
+                }
+            ]
+        },
+        {
+            "stage_id": 7,
+            "type": "guessing",
+            "answer": "Chair",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fchair_guessing.png?alt=media",
+            "options": {
+                "Chair": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fchair.mp3?alt=media",
+                "Bed": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fbed.mp3?alt=media",
+                "Bear": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fbear.mp3?alt=media",
+                "Porridge": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fporridge.mp3?alt=media"
+            }
+        },
+        {
+            "stage_id": 8,
+            "type": "drawing",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fchair_drawing.png?alt=media"
+        },
+        {
+            "stage_id": 9,
+            "type": "storypage",
+            "description": "\"This chair is too big! This chair is too big, too! This chair is just right!\" But the chair broke! Goldilocks was very tired. She went upstairs.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_5.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_5.mp3?alt=media",
+            "drawings": [
+                {
+                    "stage_id": 8,
+                    "width": 500,
+                    "top": 346,
+                    "left": 557
+                }
+            ]
+        },
+        {
+            "stage_id": 10,
+            "type": "guessing",
+            "answer": "Bed",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fbed_guessing.png?alt=media",
+            "options": {
+                "Chair": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fchair.mp3?alt=media",
+                "Bed": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fbed.mp3?alt=media",
+                "Bear": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fbear.mp3?alt=media",
+                "Porridge": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fporridge.mp3?alt=media"
+            }
+        },
+        {
+            "stage_id": 11,
+            "type": "drawing",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fbed_drawing.png?alt=media"
+        },
+        {
+            "stage_id": 12,
+            "type": "storypage",
+            "description": "\"This bed is too hard! This bed is too soft! This bed is just right!\" Then, she lay in the bed and fell asleep.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_6.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_6.mp3?alt=media",
+            "drawings": [
+                {
+                    "stage_id": 11,
+                    "width": 500,
+                    "top": 238,
+                    "left": 629
+                }
+            ]
+        },
+        {
+            "stage_id": 13,
+            "type": "storypage",
+            "description": "Soon, the bears came home.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_7.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_7.mp3?alt=media",
+            "drawings": []
+        },
+        {
+            "stage_id": 14,
+            "type": "guessing",
+            "answer": "Bear",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fbear_guessing.png?alt=media",
+            "options": {
+                "Chair": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fchair.mp3?alt=media",
+                "Bed": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fbed.mp3?alt=media",
+                "Bear": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fbear.mp3?alt=media",
+                "Porridge": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fporridge.mp3?alt=media"
+            }
+        },
+        {
+            "stage_id": 15,
+            "type": "drawing",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fbear_drawing.png?alt=media"
+        },
+        {
+            "stage_id": 16,
+            "type": "storypage",
+            "description": "\"Someone's been eating my porridge!\" said Daddy Bear. \"Someone's been eating my porridge!\" said Mummy Bear.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_8.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_8.mp3?alt=media",
+            "drawings": [
+                {
+                    "stage_id": 11,
+                    "width": 350,
+                    "top": 25,
+                    "left": 196
+                }
+            ]
+        },
+        {
+            "stage_id": 17,
+            "type": "storypage",
+            "description": "\"Someone's been eating my porridge - and it's all gone!\" said Baby Bear.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_9.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_9.mp3?alt=media",
+            "drawings": []
+        },
+        {
+            "stage_id": 18,
+            "type": "storypage",
+            "description": "\"Someone's been sitting on my chair!\" said Daddy Bear. \"Someone's been sitting on my chair!\" said Mummy Bear.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_10.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_10.mp3?alt=media",
+            "drawings": []
+        },
+        {
+            "stage_id": 19,
+            "type": "storypage",
+            "description": "\"Someone's been sitting on my chair - and it's broken!\" said Baby Bear.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_11.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_11.mp3?alt=media",
+            "drawings": []
+        },
+        {
+            "stage_id": 20,
+            "type": "storypage",
+            "description": "\"Someone's been sleeping in my bed!\" said Daddy Bear. \"Someone's been sleeping in my bed!\" said Mummy Bear.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_12.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_12.mp3?alt=media",
+            "drawings": []
+        },
+        {
+            "stage_id": 21,
+            "type": "storypage",
+            "description": "\"Someone's been sleeping in my bed - and she's still there!\" said Baby Bear.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_13.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_13.mp3?alt=media",
+            "drawings": []
+        },
+        {
+            "stage_id": 22,
+            "type": "storypage",
+            "description": "Goldilocks woke up and saw the three bears. \"Help!\" She ran downstairs and into the forest. She never came back again.",
+            "image": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_14.png?alt=media",
+            "audio": "https://firebasestorage.googleapis.com/v0/b/doodleup-f1847.appspot.com/o/Content%2F001%2Fgoldilocks_14.mp3?alt=media",
+            "drawings": []
+        }
+    ]
+}

@@ -1,0 +1,215 @@
+{
+	"id": "001",
+	"cover_image": "cover.png",
+	"story_title": "Goldilocks and the Three Bears",
+	"stages": [
+		{
+			"stage_id": 1,
+			"type": "storypage",
+			"description": "Once upon a time, there was a little girl. Her name was Goldilocks. She had golden hair.",
+			"image": "goldilocks_1.png",
+			"audio": "goldilocks_1.mp3",
+			"drawings": []
+		},
+		{
+			"stage_id": 2,
+			"type": "storypage",
+			"description": "One day, Goldilocks was walking in the forest. She saw a house and knocked on the door. She went inside. Nobody was there.",
+			"image": "goldilocks_2.png",
+			"audio": "goldilocks_2.mp3",
+			"drawings": []
+		},
+		{
+			"stage_id": 3,
+			"type": "storypage",
+			"description": "Goldilocks saw three bowls on the table. She was hungry.",
+			"image": "goldilocks_3.png",
+			"audio": "goldilocks_3.mp3",
+			"drawings": []
+		},
+		{
+			"stage_id": 4,
+			"type": "guessing",
+			"answer": "Porridge",
+			"image": "porridge_guessing.png",
+			"options": {
+				"Chair": "chair.mp3",
+				"Bed": "bed.mp3",
+				"Bear": "bear.mp3",
+				"Porridge": "porridge.mp3"
+			}
+		},
+		{
+			"stage_id": 5,
+			"type": "drawing",
+			"image": "porridge_drawing.png"
+		},
+		{
+			"stage_id": 6,
+			"type": "storypage",
+			"description": "\"This porridge is too hot! This porridge is too cold! This porridge is just right!\" Goldilocks ate all the porridge. Goldilocks was tired now.",
+			"image": "goldilocks_4.png",
+			"audio": "goldilocks_4.mp3",
+			"drawings": [
+				{
+					"stage_id": 5,
+					"width": 350,
+					"top": 550,
+					"left": 1183
+				}
+			]
+		},
+		{
+			"stage_id": 7,
+			"type": "guessing",
+			"answer": "Chair",
+			"image": "chair_guessing.png",
+			"options": {
+				"Chair": "chair.mp3",
+				"Bed": "bed.mp3",
+				"Bear": "bear.mp3",
+				"Porridge": "porridge.mp3"
+			}
+		},
+		{
+			"stage_id": 8,
+			"type": "drawing",
+			"image": "chair_drawing.png"
+		},
+		{
+			"stage_id": 9,
+			"type": "storypage",
+			"description": "\"This chair is too big! This chair is too big, too! This chair is just right!\" But the chair broke! Goldilocks was very tired. She went upstairs.",
+			"image": "goldilocks_5.png",
+			"audio": "goldilocks_5.mp3",
+			"drawings": [
+				{
+					"stage_id": 8,
+					"width": 500,
+					"top": 346,
+					"left": 557
+				}
+			]
+		},
+		{
+			"stage_id": 10,
+			"type": "guessing",
+			"answer": "Bed",
+			"image": "bed_guessing.png",
+			"options": {
+				"Chair": "chair.mp3",
+				"Bed": "bed.mp3",
+				"Bear": "bear.mp3",
+				"Porridge": "porridge.mp3"
+			}
+		},
+		{
+			"stage_id": 11,
+			"type": "drawing",
+			"image": "bed_drawing.png"
+		},
+		{
+			"stage_id": 12,
+			"type": "storypage",
+			"description": "\"This bed is too hard! This bed is too soft! This bed is just right!\" Then, she lay in the bed and fell asleep.",
+			"image": "goldilocks_6.png",
+			"audio": "goldilocks_6.mp3",
+			"drawings": [
+				{
+					"stage_id": 11,
+					"width": 500,
+					"top": 238,
+					"left": 629
+				}
+			]
+		},
+		{
+			"stage_id": 13,
+			"type": "storypage",
+			"description": "Soon, the bears came home.",
+			"image": "goldilocks_7.png",
+			"audio": "goldilocks_7.mp3",
+			"drawings": []
+		},
+		{
+			"stage_id": 14,
+			"type": "guessing",
+			"answer": "Bear",
+			"image": "bear_guessing.png",
+			"options": {
+				"Chair": "chair.mp3",
+				"Bed": "bed.mp3",
+				"Bear": "bear.mp3",
+				"Porridge": "porridge.mp3"
+			}
+		},
+		{
+			"stage_id": 15,
+			"type": "drawing",
+			"image": "bear_drawing.png"
+		},
+		{
+			"stage_id": 16,
+			"type": "storypage",
+			"description": "\"Someone's been eating my porridge!\" said Daddy Bear. \"Someone's been eating my porridge!\" said Mummy Bear.",
+			"image": "goldilocks_8.png",
+			"audio": "goldilocks_8.mp3",
+			"drawings": [
+				{
+					"stage_id": 11,
+					"width": 350,
+					"top": 25,
+					"left": 196
+				}
+			]
+		},
+		{
+			"stage_id": 17,
+			"type": "storypage",
+			"description": "\"Someone's been eating my porridge - and it's all gone!\" said Baby Bear.",
+			"image": "goldilocks_9.png",
+			"audio": "goldilocks_9.mp3",
+			"drawings": []
+		},
+		{
+			"stage_id": 18,
+			"type": "storypage",
+			"description": "\"Someone's been sitting on my chair!\" said Daddy Bear. \"Someone's been sitting on my chair!\" said Mummy Bear.",
+			"image": "goldilocks_10.png",
+			"audio": "goldilocks_10.mp3",
+			"drawings": []
+		},
+		{
+			"stage_id": 19,
+			"type": "storypage",
+			"description": "\"Someone's been sitting on my chair - and it's broken!\" said Baby Bear.",
+			"image": "goldilocks_11.png",
+			"audio": "goldilocks_11.mp3",
+			"drawings": []
+		},
+		{
+			"stage_id": 20,
+			"type": "storypage",
+			"description": "\"Someone's been sleeping in my bed!\" said Daddy Bear. \"Someone's been sleeping in my bed!\" said Mummy Bear.",
+			"image": "goldilocks_12.png",
+			"audio": "goldilocks_12.mp3",
+			"drawings": []
+		},
+		{
+			"stage_id": 21,
+			"type": "storypage",
+			"description": "\"Someone's been sleeping in my bed - and she's still there!\" said Baby Bear.",
+			"image": "goldilocks_13.png",
+			"audio": "goldilocks_13.mp3",
+			"drawings": []
+		},
+		{
+			"stage_id": 22,
+			"type": "storypage",
+			"description": "Goldilocks woke up and saw the three bears. \"Help!\" She ran downstairs and into the forest. She never came back again.",
+			"image": "goldilocks_14.png",
+			"audio": "goldilocks_14.mp3",
+			"drawings": []
+		}
+	]
+}
