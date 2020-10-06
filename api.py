@@ -1,7 +1,7 @@
 # from flask import Flask, flash, redirect, url_for
 from flask_cors import CORS
 import flask
-from flask import request  
+from flask import request
 from db import FirebaseHelper
 from werkzeug.utils import secure_filename
 import os

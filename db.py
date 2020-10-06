@@ -6,9 +6,9 @@ import requests
 from requests.exceptions import HTTPError
 
 try:
-    from urllib.parse import urlencode, quote
-except Exceptions as e:
-    from urllib import quote#, urlencode
+    from urllib.parse import quote
+except Exception:
+    from urllib import quote
 
 progress = {
     "stories": {
@@ -57,7 +57,7 @@ class FirebaseHelper:
                 'idToken']
             self.set_display_name(username, idToken)
             return "User created.", 200
-        except Exception as e:
+        except Exception:
             return "The email is already in use", 400
 
     def set_display_name(self, displayName, idToken):
@@ -69,10 +69,10 @@ class FirebaseHelper:
             request_object = requests.post(
                 request_ref, headers=headers, data=data)
             return request_object.json()
-        except Exception as e:
+        except Exception:
             try:
                 request_object.raise_for_status()
-            except HTTPError as e:
+            except HTTPError:
                 raise HTTPError(e, request_object.text)
 
     def sign_in_with_email_and_password(self, email, password):
@@ -100,7 +100,7 @@ class FirebaseHelper:
             for v in progress.val().values():
                 print(v['stories'][storyid])
                 return v['stories'][storyid]
-        except Exception as e:
+        except Exception:
             return None
 
     def update_story_progress(self, username, storyid, stageid, url, completed):
@@ -129,7 +129,7 @@ class FirebaseHelper:
         except KeyError:
             print("No value found")
             return "User does not exist", 400
-        except Exception as e:
+        except Exception:
             return "Something went wrong", 400
 
     def start_new_story(self, username, storyid):
@@ -161,7 +161,7 @@ class FirebaseHelper:
         try:
             for v in log.val().values():
                 return v
-        except Exception as e:
+        except Exception:
             return None
 
     def get_all_content(self):
@@ -176,7 +176,7 @@ class FirebaseHelper:
                 }
                 result.append(story)
             return result
-        except Exception as e:
+        except Exception:
             return []
 
 
