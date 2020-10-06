@@ -6,7 +6,7 @@ python:
 install:
   - pip install -r requirements.txt
 before_script:
-    - flake8 . --ignore=E501, E302 # ignore len > 79char; 2 blank lines after flask route
+    - flake8 --ignore=E501,E302 . # ignore len > 79char; 2 blank lines after flask route
 # command to run tests
 # script:
     # - python -m flake8 # test for linting
