@@ -20,5 +20,5 @@ requests-toolbelt==0.7.0
 rsa==4.5
 six==1.15.0
 Werkzeug==1.0.1
-pytest==6.1.1
+pytest==4.6.11
 flake8==3.8.4
