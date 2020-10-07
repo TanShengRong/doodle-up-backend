@@ -2,7 +2,7 @@ FROM python:3
 
 WORKDIR /
 
-# COPY requirements.txt ./
+COPY requirements.txt ./
 
 # RUN pip3 install pyrebase
 # RUN pip install --upgrade pip
