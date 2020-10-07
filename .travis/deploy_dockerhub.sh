@@ -4,6 +4,6 @@ docker login --username $DOCKER_USER --password $DOCKER_PASS
 # else
 # TAG="$TRAVIS_BRANCH"
 # fi
-docker build -f Dockerfile -t $LOWERCASE_REPO_SLUG:$TAG .
+docker build -f Dockerfile -t $LOWERCASE_REPO_SLUG:latest .
 docker tag $LOWERCASE_REPO_SLUG $DOCKER_REPO
 docker push $DOCKER_REPO
