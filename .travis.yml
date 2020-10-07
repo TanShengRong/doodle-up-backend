@@ -21,5 +21,5 @@ script:
     # - python -m pytest -v
 after_success:
     - sh .travis/deploy_dockerhub.sh
-    - test “$TRAVIS_BRANCH” = “master” && sh .travis/deploy_heroku.sh 
+    - if [ "$TRAVIS_BRANCH" = "master"]; then sh .travis/deploy_heroku.sh; fi
     #test “$TRAVIS_BRANCH” = “master” && sh .travis/deploy_heroku.sh
