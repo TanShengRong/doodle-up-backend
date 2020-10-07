@@ -5,6 +5,12 @@ language: python
 python:
   - "2.7"
   - "3.8"
+env:
+    global:
+      # Docker Hub cannot handle uppercase characters in repository names. Fix it
+      # with a bashism as Travis CI cannot handle quoting within command
+      # substitution.
+      - LOWERCASE_REPO_SLUG="${TRAVIS_REPO_SLUG,,}"
 # command to install dependencies
 install:
   - pip install -r requirements.txt
