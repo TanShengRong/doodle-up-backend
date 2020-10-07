@@ -1,3 +1,6 @@
+sudo: required
+services:
+    - docker
 language: python
 python:
   - "2.7"
@@ -10,3 +13,5 @@ script:
     - flake8 --ignore=E501,E302 . # ignore len > 79char; 2 blank lines after flask route
     # - python -m flake8 # test for linting
     # - python -m pytest -v
+after_success:
+    - sh .travis/deploy_dockerhub.sh
