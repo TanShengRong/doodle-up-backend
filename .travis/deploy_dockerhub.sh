@@ -5,9 +5,6 @@ else
 TAG="$TRAVIS_BRANCH"
 fi
 docker build -f Dockerfile -t $TRAVIS_REPO_SLUG:$TAG .
-echo $TRAVIS_REPO_SLUG
-tmp=${TRAVIS_REPO_SLUG,,}
-echo $tmp
-echo ${$TRAVIS_REPO_SLUG,,}
-docker tag ${$TRAVIS_REPO_SLUG,,} $DOCKER_REPO
+travis_repo_slug =`echo "$TRAVIS_REPO_SLUG" | tr '[:upper:]' '[:lower:]'` 
+docker tag $travis_repo_slug $DOCKER_REPO
 docker push $DOCKER_REPO
