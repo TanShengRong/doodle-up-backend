@@ -1,20 +1,12 @@
-FROM python:3.8-slim-buster
+FROM python:3
 
 WORKDIR /
 
-COPY requirements.txt ./
-# RUN pip3 install --upgrade setuptools
-# RUN pip3 install --upgrade gcloud
-# RUN pip3 install --upgrade pycryptodome
-# RUN pip3 install --upgrade requests_toolbelt
-# RUN pip3 install --upgrade python-jwt
-# RUN pip3 install --upgrade requests
-# RUN pip3 install --upgrade oauth2client
-# RUN pip3 install --upgrade jws
-# RUN pip3 install --upgrade pyrebase
-RUN pip install --upgrade pip
-RUN python -m pip install pyrebase
-# RUN pip install -r requirements.txt
+# COPY requirements.txt ./
+
+# RUN pip3 install pyrebase
+# RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
 COPY . .
 
