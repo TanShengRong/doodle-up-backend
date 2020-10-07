@@ -10,7 +10,7 @@ Progress saving of drawn photo
 
 ## API Endpoint
 
-`https://tanshengrong.pythonanywhere.com/`
+`https://doodle-up-backend.herokuapp.com/`
 
 ## Available APIs
 

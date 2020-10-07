@@ -160,7 +160,7 @@ def get_all_content():
 
 @app.route('/')
 def index():
-    return 'Working'
+    return 'This is ASE CZ3002 DoodleUp Backend'
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)))
