@@ -158,6 +158,9 @@ def get_all_content():
     else:
         return "Error", 400
 
+@app.route('/')
+def index():
+    return 'Working'
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)))
