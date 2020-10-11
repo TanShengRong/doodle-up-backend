@@ -1,7 +1,7 @@
-# from flask import Flask, flash, redirect, url_for
+from flask import Flask, flash, redirect, url_for
 from flask_cors import CORS
 import flask
-from flask import request
+from flask import jsonify, request, Response
 from db import FirebaseHelper
 from werkzeug.utils import secure_filename
 import os
@@ -65,7 +65,7 @@ def sign_in():
     try:
         user_json = helper.sign_in_with_email_and_password(email, password)
         return user_json["displayName"], 200
-    except Exception:
+    except:
         return "Account does not exist or wrong credentials.", 400
 
 
@@ -103,17 +103,20 @@ def save_user_progress():
     storyid = request.form['story_id']
     stage_id = request.form['stage_id']
     completed = request.form['completed']
-    # json = request.get_json()
+    json = request.get_json()
     # TODO: Saving file needs testing
     # file = json["new_image"]
-    file = request.files['new_image']
-    # file = request.form['new_image']
-    if file:
-        filename = secure_filename(file.filename)
-        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(filepath)
-        url = helper.upload_file(filepath, 'Progress/')
-        os.remove(filepath)
+    if 'new_image' in request.files:
+        file = request.files['new_image']
+        # file = request.form['new_image']
+        if file:
+            filename = secure_filename(file.filename)
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(filepath)
+            url = helper.upload_file(filepath, 'Progress/')
+            os.remove(filepath)
+    else:
+        url = None
     result = helper.update_story_progress(
         username, storyid, stage_id, url, completed)
     return result
@@ -158,9 +161,6 @@ def get_all_content():
     else:
         return "Error", 400
 
-@app.route('/')
-def index():
-    return 'This is ASE CZ3002 DoodleUp Backend'
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)))
+    app.run()

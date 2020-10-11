@@ -1,14 +1,14 @@
 import pyrebase
-# import uuid
+import uuid
 import os
 import json
 import requests
 from requests.exceptions import HTTPError
 
 try:
-    from urllib.parse import quote
-except Exception:
-    from urllib import quote
+    from urllib.parse import urlencode, quote
+except:
+    from urllib import urlencode, quote
 
 progress = {
     "stories": {
@@ -30,7 +30,7 @@ class FirebaseHelper:
             "authDomain": "doodleup-f1847.firebaseapp.com",
             "databaseURL": "https://doodleup-f1847.firebaseio.com/",
             "storageBucket": "doodleup-f1847.appspot.com",
-            "serviceAccount": './key.json'
+            "serviceAccount": './doodleup-f1847-firebase-adminsdk-x4yoc-66b445712b.json'
         }
         app = pyrebase.initialize_app(config)
         self.db = app.database()
@@ -39,9 +39,9 @@ class FirebaseHelper:
 
     def upload_file(self, filepath, upload_to):
         filename = os.path.basename(filepath)
-        self.storage.child(upload_to + filename).put(filepath)
-        print(upload_to + filename)
-        return self.storage.child(upload_to + filename).get_url(None)
+        self.storage.child(upload_to+filename).put(filepath)
+        print(upload_to+filename)
+        return self.storage.child(upload_to+filename).get_url(None)
 
     def get_url(self, filepath):
         return self.storage.child(filepath).get_url(None)
@@ -57,7 +57,7 @@ class FirebaseHelper:
                 'idToken']
             self.set_display_name(username, idToken)
             return "User created.", 200
-        except Exception:
+        except:
             return "The email is already in use", 400
 
     def set_display_name(self, displayName, idToken):
@@ -69,7 +69,7 @@ class FirebaseHelper:
             request_object = requests.post(
                 request_ref, headers=headers, data=data)
             return request_object.json()
-        except Exception:
+        except:
             try:
                 request_object.raise_for_status()
             except HTTPError as e:
@@ -100,7 +100,7 @@ class FirebaseHelper:
             for v in progress.val().values():
                 print(v['stories'][storyid])
                 return v['stories'][storyid]
-        except Exception:
+        except:
             return None
 
     def update_story_progress(self, username, storyid, stageid, url, completed):
@@ -111,10 +111,13 @@ class FirebaseHelper:
                 print(v)
                 for stage in v['stories'][storyid]["stages"]:
                     if stage['stage_id'] == stageid:
-                        stage['image_url'] == url
+                        if url:
+                            stage['image_url'] == url
                         stage['completed'] = True
                         self.db.child('progress').update(progress)
-                        return "Updated stage " + stageid, 200
+                        if url:
+                            return "Updated stage " + stageid + " with new image.", 200
+                        return "Updated stage "+stageid, 200
                 # did not find existing stage, add as new save
                 new_stage = {
                     "image_url": url,
@@ -129,7 +132,7 @@ class FirebaseHelper:
         except KeyError:
             print("No value found")
             return "User does not exist", 400
-        except Exception:
+        except:
             return "Something went wrong", 400
 
     def start_new_story(self, username, storyid):
@@ -161,7 +164,7 @@ class FirebaseHelper:
         try:
             for v in log.val().values():
                 return v
-        except Exception:
+        except:
             return None
 
     def get_all_content(self):
@@ -176,7 +179,7 @@ class FirebaseHelper:
                 }
                 result.append(story)
             return result
-        except Exception:
+        except:
             return []
 
 
