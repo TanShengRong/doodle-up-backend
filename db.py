@@ -37,11 +37,10 @@ class FirebaseHelper:
         self.storage = app.storage()
         self.auth = app.auth()
 
-    def upload_file(self, filepath, upload_to):
+    def upload_file(self, filepath, firebase_path):
         filename = os.path.basename(filepath)
-        self.storage.child(upload_to+filename).put(filepath)
-        print(upload_to+filename)
-        return self.storage.child(upload_to+filename).get_url(None)
+        self.storage.child(firebase_path).put(filepath)
+        return self.storage.child(firebase_path).get_url(None)
 
     def get_url(self, filepath):
         return self.storage.child(filepath).get_url(None)

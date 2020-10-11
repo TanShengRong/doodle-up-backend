@@ -100,7 +100,7 @@ def account_info(idToken):
 @app.route('/progress', methods=['POST'])
 def save_user_progress():
     username = request.form['username']
-    storyid = request.form['story_id']
+    story_id = request.form['story_id']
     stage_id = request.form['stage_id']
     completed = request.form['completed']
     json = request.get_json()
@@ -112,13 +112,15 @@ def save_user_progress():
         if file:
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            firebase_path = "Progress/{}/{}".format(
+                username, story_id+stage_id)
             file.save(filepath)
-            url = helper.upload_file(filepath, 'Progress/')
+            url = helper.upload_file(filepath, firebase_path)
             os.remove(filepath)
     else:
         url = None
     result = helper.update_story_progress(
-        username, storyid, stage_id, url, completed)
+        username, story_id, stage_id, url, completed)
     return result
 
 # Get user's progress for the selected story, else initialize
