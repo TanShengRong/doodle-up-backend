@@ -30,7 +30,7 @@ class FirebaseHelper:
             "authDomain": "doodleup-f1847.firebaseapp.com",
             "databaseURL": "https://doodleup-f1847.firebaseio.com/",
             "storageBucket": "doodleup-f1847.appspot.com",
-            "serviceAccount": './doodleup-f1847-firebase-adminsdk-x4yoc-66b445712b.json'
+            "serviceAccount": './key.json'
         }
         app = pyrebase.initialize_app(config)
         self.db = app.database()
