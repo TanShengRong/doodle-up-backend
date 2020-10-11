@@ -112,7 +112,7 @@ class FirebaseHelper:
                 for stage in v['stories'][storyid]["stages"]:
                     if stage['stage_id'] == stageid:
                         if url:
-                            stage['image_url'] == url
+                            stage['image_url'] = url
                         stage['completed'] = True
                         self.db.child('progress').update(progress)
                         if url:
