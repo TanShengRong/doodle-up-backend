@@ -103,11 +103,15 @@ class FirebaseHelper:
             return None
 
     def update_story_progress(self, username, storyid, stageid, url, completed):
+        if completed.lower() == "true":
+            completed = True
+        else:
+            completed = False
+        stageid = int(stageid)
         try:
             progress = self.db.child('progress').order_by_child(
                 'username').equal_to(username).get().val()
             for v in progress.values():
-                print(v)
                 for stage in v['stories'][storyid]["stages"]:
                     if stage['stage_id'] == stageid:
                         if url:
@@ -115,8 +119,8 @@ class FirebaseHelper:
                         stage['completed'] = True
                         self.db.child('progress').update(progress)
                         if url:
-                            return "Updated stage " + stageid + " with new image.", 200
-                        return "Updated stage "+stageid, 200
+                            return "Updated stage " + str(stageid) + " with new image.", 200
+                        return "Updated stage " + str(stageid), 200
                 # did not find existing stage, add as new save
                 new_stage = {
                     "image_url": url,
@@ -124,14 +128,13 @@ class FirebaseHelper:
                     "completed": completed
                 }
                 v['stories'][storyid]["stages"].append(new_stage)
-
             self.db.child('progress').update(progress)
             return "Added new stage " + stageid + " to story " + storyid, 200
 
         except KeyError:
             print("No value found")
             return "User does not exist", 400
-        except:
+        except Exception as e:
             return "Something went wrong", 400
 
     def start_new_story(self, username, storyid):
