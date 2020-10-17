@@ -92,12 +92,20 @@ class FirebaseHelper:
     #     except:
     #         return None
 
+    def get_all_progress(self, username):
+        progress = self.db.child('progress').order_by_child(
+            'username').equal_to(username).get()
+        try:
+            for v in progress.val().values():
+                return v['stories']
+        except:
+            return None
+
     def get_story_progress(self, username, storyid):
         progress = self.db.child('progress').order_by_child(
             'username').equal_to(username).get()
         try:
             for v in progress.val().values():
-                print(v['stories'][storyid])
                 return v['stories'][storyid]
         except:
             return None

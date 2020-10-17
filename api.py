@@ -130,10 +130,12 @@ def save_user_progress():
 @app.route('/progress', methods=['GET'])
 def get_user_progress():
     username = request.args.get('username')
+    if "storyid" not in request.args:
+        return helper.get_all_progress(username)
     storyid = request.args.get('storyid')
     progress = helper.get_story_progress(username, storyid)
-    if not progress:
-        progress = helper.start_new_story(username, storyid)
+    # if not progress:
+    #     progress = helper.start_new_story(username, storyid)
     return progress
 
 # STORY CONTENT ENDPOINTS
