@@ -77,7 +77,13 @@ stages: [
   - `200, "Updated stage 1.1"`
   - `200, "Added new stage 1.1 to story 008"`
   - `400, "User does not exist"`
-
+---
+```/reset```
+- **POST**: Resets a user's specified story back to stage 1.
+- Parameters:
+  - `username`
+  - `storyid`
+- Returns `"Reset Complete".`
 ---
 ### Story Content Endpoints
 `/content?storyid=001`

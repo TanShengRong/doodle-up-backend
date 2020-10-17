@@ -138,6 +138,14 @@ def get_user_progress():
     #     progress = helper.start_new_story(username, storyid)
     return progress
 
+
+@app.route('/reset', methods=['POST'])
+def restart_user_progress():
+    username = request.form['username']
+    story_id = request.form['storyid']
+    return helper.reset_story_progress(username, story_id)
+
+
 # STORY CONTENT ENDPOINTS
 # /content?storyid=001
 @app.route('/content', methods=['GET'])

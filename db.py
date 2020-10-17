@@ -92,6 +92,24 @@ class FirebaseHelper:
     #     except:
     #         return None
 
+    def reset_story_progress(self, username, storyid):
+        progress = self.db.child('progress').order_by_child(
+            'username').equal_to(username).get().val()
+        try:
+            for v in progress.values():
+                v['stories'][storyid] = {
+                    'completed': False,
+                    'stages': [{
+                        "image_url": "",
+                        "stage_id": 1,
+                        "completed": False
+                    }]
+                }
+                self.db.child('progress').update(progress)
+                return "Reset Complete."
+        except:
+            return None
+
     def get_all_progress(self, username):
         progress = self.db.child('progress').order_by_child(
             'username').equal_to(username).get()
@@ -148,6 +166,7 @@ class FirebaseHelper:
     def start_new_story(self, username, storyid):
         # Start story
         new_stage = {
+            "completed": False,
             "stages": [
                     {
                         "image_url": "",
