@@ -24,3 +24,5 @@ yarn-error.log*
 *.pyc
 .idea/workspace.xml
 .vscode/settings.json
+
+.idea/

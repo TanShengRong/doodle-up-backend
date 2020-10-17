@@ -124,4 +124,5 @@ else `400, "Story content not found"`
 ## Tools used
 
 - [Firebase Authentication, Realtime Database, Firebase Storage](https://firebase.google.com)
-- [Python Anywhere](https://www.pythonanywhere.com)
+- Travis CI
+- Heroku
