@@ -129,10 +129,11 @@ class FirebaseHelper:
             return None
 
     def update_story_progress(self, username, storyid, stageid, url, completed):
-        if isinstance(completed, str) and completed.lower() == "true":
-            completed = True
-        else:
-            completed = False
+        if isinstance(completed, str):
+            if completed.lower() == "true":
+                completed = True
+            else:
+                completed = False
         stageid = int(stageid)
         try:
             progress = self.db.child('progress').order_by_child(
