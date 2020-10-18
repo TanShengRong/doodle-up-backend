@@ -155,7 +155,7 @@ class FirebaseHelper:
                         stage_completion_list = [ _stage['completed'] for _stage in v['stories'][storyid]["stages"] ]  
                         if False in stage_completion_list or len(stage_completion_list) != stages_count:
                             v['stories'][storyid]['completed'] = False
-                        #=== if all True in user db && entries in user db corressponds to content db ===#
+                        #=== if all True in user db && entries count in user db corressponds to content db ===#
                         else: 
                             v['stories'][storyid]['completed'] = True
                         self.db.child('progress').update(progress)
@@ -163,9 +163,9 @@ class FirebaseHelper:
                         if url:
                             return "Updated stage " + str(stageid) + " with new image.", 200
                         elif v['stories'][storyid]['completed']:
-                            return "Updated stage " + str(stageid) + " with new image. Story " + str(storyid) + " is completed", 200
+                            return "Updated stage " + str(stageid) + " Story " + str(storyid) + " is completed", 200
                         return "Updated stage " + str(stageid), 200
-                # did not find existing stage, add as new save
+                # did not find existing stage, add as new save, check for storybook completion
                 new_stage = {
                     "image_url": url,
                     "stage_id": stageid,
@@ -179,8 +179,8 @@ class FirebaseHelper:
                     v['stories'][storyid]['completed'] = True
             self.db.child('progress').update(progress)
             if v['stories'][storyid]['completed']:
-                return "Added new stage " + str(stageid) + " to story " + storyid, 200
-            return "Added new stage " + str(stageid) + " to story " + storyid + ". Story " + str(storyid) + " is completed", 200
+                return "Added new stage " + str(stageid) + " to story " + storyid + ". Story " + str(storyid) + " is completed", 200
+            return "Added new stage " + str(stageid) + " to story " + storyid, 200
 
         except KeyError:
             print("No value found")
