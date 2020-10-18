@@ -140,12 +140,22 @@ class FirebaseHelper:
             for v in progress.values():
                 for stage in v['stories'][storyid]["stages"]:
                     if stage['stage_id'] == stageid:
+                        # update db using form data
                         if url:
                             stage['image_url'] = url
-                        stage['completed'] = True
+                        stage['completed'] = completed
+                        # check if stage_id all completed, else reset to False
+                        stage_completion_list = [ stage['completed'] for stage in v['stories'][storyid]["stages"] ]  
+                        if False in stage_completion_list:
+                            v['stories'][storyid]['completed'] = False
+                        else:
+                            v['stories'][storyid]['completed'] = True
                         self.db.child('progress').update(progress)
+                        
                         if url:
                             return "Updated stage " + str(stageid) + " with new image.", 200
+                        elif v['stories'][storyid]['completed']:
+                            return "Updated stage " + str(stageid) + " with new image. Story " + str(storyid) + " is completed", 200
                         return "Updated stage " + str(stageid), 200
                 # did not find existing stage, add as new save
                 new_stage = {
