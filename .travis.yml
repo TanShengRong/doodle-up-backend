@@ -26,5 +26,6 @@ after_success:
     #   test $TRAVIS_PULL_REQUEST = "false" && 
     #   sh .travis/deploy_heroku.sh
     #=== to trigger heroku publish as long as PR made into master ===#
-    - test $TRAVIS_BRANCH = "master" && 
-      sh .travis/deploy_heroku.sh
+    # - test $TRAVIS_BRANCH = "master" && 
+    #   sh .travis/deploy_heroku.sh
+    - test $TRAVIS_BRANCH = "master"
