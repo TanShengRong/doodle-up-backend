@@ -129,7 +129,7 @@ class FirebaseHelper:
             return None
 
     def update_story_progress(self, username, storyid, stageid, url, completed):
-        if completed.lower() == "true":
+        if isinstance(completed, str) and completed.lower() == "true":
             completed = True
         else:
             completed = False
@@ -145,13 +145,14 @@ class FirebaseHelper:
                             stage['image_url'] = url
                         stage['completed'] = completed
                         # check if stage_id all completed, else reset to False
-                        stage_completion_list = [ stage['completed'] for stage in v['stories'][storyid]["stages"] ]  
+                        stage_completion_list = [stage['completed']
+                                                 for stage in v['stories'][storyid]["stages"]]
                         if False in stage_completion_list:
                             v['stories'][storyid]['completed'] = False
                         else:
                             v['stories'][storyid]['completed'] = True
                         self.db.child('progress').update(progress)
-                        
+
                         if url:
                             return "Updated stage " + str(stageid) + " with new image.", 200
                         elif v['stories'][storyid]['completed']:
