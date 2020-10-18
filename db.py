@@ -155,7 +155,7 @@ class FirebaseHelper:
                 }
                 v['stories'][storyid]["stages"].append(new_stage)
             self.db.child('progress').update(progress)
-            return "Added new stage " + stageid + " to story " + storyid, 200
+            return "Added new stage " + str(stageid) + " to story " + storyid, 200
 
         except KeyError:
             print("No value found")
