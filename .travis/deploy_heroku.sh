@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ $TRAVIS_BRANCH != "master" ]
+if [ $TRAVIS_BRANCH != "master" ] && [ $TRAVIS_PULL_REQUEST = "false" ]
 then
   echo "we're not on master branch"
   exit 0
