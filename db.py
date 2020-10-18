@@ -136,6 +136,12 @@ class FirebaseHelper:
                 completed = False
         stageid = int(stageid)
         try:
+            #=== assuming that there is only one content entry for one storyid ===#
+            stages_count = len(list(
+                self.db.child('content').order_by_child('id')
+                .equal_to(storyid)
+                .limit_to_first(1).get().val().values())[0]
+                ['stages'])
             progress = self.db.child('progress').order_by_child(
                 'username').equal_to(username).get().val()
             for v in progress.values():
@@ -146,12 +152,6 @@ class FirebaseHelper:
                             stage['image_url'] = url
                         stage['completed'] = completed
                         # check if stage_id all completed, else reset to False
-                        #=== assuming that there is only one content entry for one storyid ===#
-                        stages_count = len(list(
-                            self.db.child('content').order_by_child('id')
-                            .equal_to(storyid)
-                            .limit_to_first(1).get().val().values())[0]
-                            ['stages'])
                         stage_completion_list = [ _stage['completed'] for _stage in v['stories'][storyid]["stages"] ]  
                         if False in stage_completion_list or len(stage_completion_list) != stages_count:
                             v['stories'][storyid]['completed'] = False
@@ -172,8 +172,15 @@ class FirebaseHelper:
                     "completed": completed
                 }
                 v['stories'][storyid]["stages"].append(new_stage)
+                stage_completion_list = [ _stage['completed'] for _stage in v['stories'][storyid]["stages"] ]  
+                if False in stage_completion_list or len(stage_completion_list) != stages_count:
+                    v['stories'][storyid]['completed'] = False
+                else: 
+                    v['stories'][storyid]['completed'] = True
             self.db.child('progress').update(progress)
-            return "Added new stage " + str(stageid) + " to story " + storyid, 200
+            if v['stories'][storyid]['completed']:
+                return "Added new stage " + str(stageid) + " to story " + storyid, 200
+            return "Added new stage " + str(stageid) + " to story " + storyid + ". Story " + str(storyid) + " is completed", 200
 
         except KeyError:
             print("No value found")
