@@ -145,10 +145,17 @@ class FirebaseHelper:
                             stage['image_url'] = url
                         stage['completed'] = completed
                         # check if stage_id all completed, else reset to False
+                        #=== assuming that there is only one content entry for one storyid ===#
+                        stages_count = len(list(
+                            self.db.child('content').order_by_child('id')
+                            .equal_to(storyid)
+                            .limit_to_first(1).get().val().values())[0]
+                            ['stages'])
                         stage_completion_list = [ stage['completed'] for stage in v['stories'][storyid]["stages"] ]  
-                        if False in stage_completion_list:
+                        if False in stage_completion_list or len(stage_completion_list) != stages_count:
                             v['stories'][storyid]['completed'] = False
-                        else:
+                        #=== if all True in user db && entries in user db corressponds to content db===#
+                        else: 
                             v['stories'][storyid]['completed'] = True
                         self.db.child('progress').update(progress)
                         
