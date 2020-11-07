@@ -4,8 +4,8 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     echo "Should not deploy pull request; just doing a build."
     exit 0
 fi
-if [ "$TRAVIS_BRANCH" != "master" ]; then
-    echo "Should not deploy a non-master branch; just doing a build."
+if [ "$TRAVIS_BRANCH" != "main" ]; then
+    echo "Should not deploy a non-main branch; just doing a build."
     exit 0
 fi
 wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
