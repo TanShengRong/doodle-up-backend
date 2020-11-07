@@ -142,7 +142,7 @@ def get_user_progress():
 @app.route('/reset', methods=['POST'])
 def restart_user_progress():
     username = request.form['username']
-    story_id = request.form['storyid']
+    story_id = request.form['story_id']
     return helper.reset_story_progress(username, story_id)
 
 
