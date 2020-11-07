@@ -17,16 +17,8 @@ install:
 # before_script:
 script:
   - echo "Insert tests here"
+  - python -m pytest -v
     # - flake8 --ignore=E501,E302 . # ignore len > 79char; 2 blank lines after flask route; test for linting
-    # - python -m pytest -v
 after_success:
     - sh .travis/deploy_dockerhub.sh
-    #=== to trigger heroku publish only with master commits ===#
-    # - test $TRAVIS_BRANCH = "master" && 
-    #   test $TRAVIS_PULL_REQUEST = "false" && 
-    #   sh .travis/deploy_heroku.sh
-    #=== to trigger heroku publish as long as PR made into master ===#
-    # - test $TRAVIS_BRANCH = "master" && 
-    #   sh .travis/deploy_heroku.sh
-    #=== always deploy ===#
     - sh .travis/deploy_heroku.sh
