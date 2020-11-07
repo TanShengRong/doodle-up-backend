@@ -1,12 +1,5 @@
 # DoodleUp Backend [![Build Status](https://travis-ci.com/TanShengRong/doodle-up-backend.svg?token=zNTTYhNxQUCYoBN6uBps&branch=main)](https://travis-ci.com/TanShengRong/doodle-up-backend)
 
-## TODO
-
-Progress saving of drawn photo
-
-- Accept file from React Js -> store in flask working dir
-- Upload file to Storage -> return Storage link
-- Write Storage link & Username to Realtime Database 
 
 ## API Endpoint
 
@@ -122,13 +115,27 @@ else `400, "Story content not found"`
 
 
 ---
-### Testing and Other Endpoints
+## To run locally
 
-- N.A
+`pip3 install -r requirements.txt`
+
+> Install dependencies
+
+`python3 api.py`
+
+> Running flask REST API locally
+
+`python3 -m pytest -v`
+
+> Running Unit Tests locally
+
+### Testing Screens
+
+![tests](./assets/tests.png)
 
 
 ## Tools used
 
 - [Firebase Authentication, Realtime Database, Firebase Storage](https://firebase.google.com)
-- Travis CI
-- Heroku
+- [Travis CI](https://travis-ci.org)
+- [Heroku](https://heroku.com)
