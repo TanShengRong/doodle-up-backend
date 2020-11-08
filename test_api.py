@@ -89,7 +89,7 @@ def test_story_content_endpoint_get(client):
     assert response.status_code == 200
 
 def test_all_story_content_endpoint_get(client):
-    response = client.get('/content?storyid=001')
+    response = client.get('/content/all')
     assert response.status_code != 400
 
 def test_upload_post(client):
