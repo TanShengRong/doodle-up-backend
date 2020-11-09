@@ -129,10 +129,17 @@ else `400, "Story content not found"`
 
 > Running Unit Tests locally
 
+`python3 -m locust`
+
+> Running Stress Test locally
+
 ### Testing Screens
 
 ![tests](./assets/tests.png)
 
+![stress_test](./assets/stress_test.png)
+
+> Interactive webpage available [here.](./assets/stress_test.html)
 
 ## Tools used
 
